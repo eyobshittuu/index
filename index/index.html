@@ -115,7 +115,14 @@
             <div class="product-body">
               <h3>Broad‑Spectrum Antibiotic</h3>
               <p>Effective against common bacterial infections in livestock.</p>
-              <button class="btn outline" data-product="antibiotic">Details</button>
+              <button class="btn outline details-toggle" data-product="antibiotic" aria-expanded="false" aria-controls="details-antibiotic">Details</button>
+              <div class="product-details" id="details-antibiotic" hidden>
+                <ul class="muted">
+                  <li>Use: Bacterial infections (consult veterinarian).</li>
+                  <li>Form: Injectable / Oral (varies by product).</li>
+                  <li>Note: Observe withdrawal periods for food animals.</li>
+                </ul>
+              </div>
             </div>
           </article>
 
@@ -126,7 +133,14 @@
             <div class="product-body">
               <h3>Multivalent Vaccine</h3>
               <p>Protects against major viral diseases; cold‑chain maintained.</p>
-              <button class="btn outline" data-product="vaccine">Details</button>
+              <button class="btn outline details-toggle" data-product="vaccine" aria-expanded="false" aria-controls="details-vaccine">Details</button>
+              <div class="product-details" id="details-vaccine" hidden>
+                <ul class="muted">
+                  <li>Storage: 2–8°C, do not freeze. Keep in cold‑chain.</li>
+                  <li>Schedule: Follow manufacturer and vet guidance.</li>
+                  <li>Species: Cattle, small ruminants, pets (variant dependent).</li>
+                </ul>
+              </div>
             </div>
           </article>
 
@@ -137,7 +151,14 @@
             <div class="product-body">
               <h3>Dewormer</h3>
               <p>Broad efficacy against internal parasites for cattle and pets.</p>
-              <button class="btn outline" data-product="dewormer">Details</button>
+              <button class="btn outline details-toggle" data-product="dewormer" aria-expanded="false" aria-controls="details-dewormer">Details</button>
+              <div class="product-details" id="details-dewormer" hidden>
+                <ul class="muted">
+                  <li>Dose by species and weight; verify active ingredient.</li>
+                  <li>Repeat per parasite life cycle as advised.</li>
+                  <li>Forms: Oral drench, tablet, paste (varies).</li>
+                </ul>
+              </div>
             </div>
           </article>
         </div>

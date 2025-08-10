@@ -7,6 +7,7 @@
   --muted: #9aa7bd;
   --border: #1e2a45;
   --shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+  --footer-handle-height: 16px;
 }
 
 * {
@@ -242,6 +243,14 @@ body {
   padding: 14px;
 }
 
+.product-details {
+  margin-top: 10px;
+  border-top: 1px solid var(--border);
+  padding-top: 10px;
+  overflow: hidden;
+  transition: max-height 0.25s ease;
+}
+
 /* Contact */
 .contact-grid {
   display: grid;
@@ -330,6 +339,35 @@ textarea {
   border-top: 1px solid var(--border);
   padding: 12px 0 24px;
   text-align: center;
+}
+
+/* Hover-reveal footer on hover-capable devices */
+@media (hover: hover) and (pointer: fine) {
+  .site-footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 150;
+    transform: translateY(calc(100% - var(--footer-handle-height)));
+    transition: transform 0.28s ease;
+    box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.4);
+  }
+  .site-footer:hover {
+    transform: translateY(0);
+  }
+  /* Optional: make handle more visible */
+  .site-footer::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 64px;
+    height: 4px;
+    border-radius: 2px;
+    background: #2a375a;
+  }
 }
 
 /* Responsive */

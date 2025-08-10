@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Welcome | TY &amp; ALPHA Animal Drug Seller</title>
+    <title>Welcome | TY &amp; ALPHA Animal VET </title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -22,6 +22,7 @@
         <span class="orb o4"></span>
         <span class="orb o5"></span>
       </div>
+      <div id="stars"></div>
     </div>
 
     <main class="welcome">
@@ -48,6 +49,34 @@
           e.preventDefault();
           go();
         }
+      });
+
+      // Create twinkling stars
+      (function createStars() {
+        const container = document.getElementById('stars');
+        if (!container) return;
+        const { innerWidth: w, innerHeight: h } = window;
+        const count = Math.min(120, Math.floor((w * h) / 12000));
+        const frag = document.createDocumentFragment();
+        for (let i = 0; i < count; i++) {
+          const s = document.createElement('span');
+          s.className = 'star';
+          s.style.left = Math.random() * 100 + '%';
+          s.style.top = Math.random() * 100 + '%';
+          s.style.animationDelay = (Math.random() * 3).toFixed(2) + 's';
+          s.style.opacity = (0.2 + Math.random() * 0.8).toFixed(2);
+          frag.appendChild(s);
+        }
+        container.appendChild(frag);
+      })();
+
+      // Simple mouse parallax for orbs
+      const orbs = document.querySelector('.orbs');
+      window.addEventListener('mousemove', (e) => {
+        const x = (e.clientX / window.innerWidth - 0.5) * 10; // px offset
+        const y = (e.clientY / window.innerHeight - 0.5) * 10;
+        document.documentElement.style.setProperty('--parx', x.toFixed(2) + 'px');
+        document.documentElement.style.setProperty('--pary', y.toFixed(2) + 'px');
       });
     </script>
   </body>

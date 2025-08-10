@@ -7,6 +7,8 @@
   --text: #ffffff;
   --text-dim: #e9f1ffcc;
   --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  --parx: 0px;
+  --pary: 0px;
 }
 
 * {
@@ -35,12 +37,15 @@ body {
       var(--bg-4), var(--bg-5), var(--bg-2));
   filter: blur(90px) saturate(120%);
   opacity: 0.25;
+  animation: spin 40s linear infinite;
 }
 
 .orbs {
   position: fixed;
   inset: 0;
   pointer-events: none;
+  transform: translate(var(--parx), var(--pary));
+  transition: transform 80ms linear;
 }
 
 .orb {
@@ -93,6 +98,11 @@ body {
   }
 }
 
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 .welcome {
   position: relative;
   height: 100dvh;
@@ -111,6 +121,9 @@ body {
   letter-spacing: 0.5px;
   margin: 0 0 10px;
   text-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transform: translateY(12px);
+  animation: fadeUp 700ms ease forwards 200ms;
 }
 
 .brand span {
@@ -124,6 +137,9 @@ body {
   color: var(--text-dim);
   font-size: clamp(14px, 2.2vw, 18px);
   margin: 0 0 28px;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeUp 700ms ease forwards 400ms;
 }
 
 .cta {
@@ -136,6 +152,9 @@ body {
   border-radius: 14px;
   box-shadow: var(--shadow);
   transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+  opacity: 0;
+  transform: translateY(8px) scale(0.98);
+  animation: fadeUp 700ms ease forwards 600ms, pulse 2600ms ease-in-out infinite 1600ms;
 }
 
 .cta:hover {
@@ -148,6 +167,34 @@ body {
   margin-top: 14px;
   color: var(--text-dim);
   font-size: 14px;
+  opacity: 0;
+  animation: fadeUp 700ms ease forwards 800ms;
+}
+
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(12px) scale(0.98); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes pulse {
+  0% { transform: translateY(0) scale(1); filter: saturate(100%); }
+  100% { transform: translateY(-1px) scale(1.02); filter: saturate(115%); }
+}
+
+/* Decorative stars */
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #fff;
+  border-radius: 50%;
+  opacity: 0.85;
+  animation: twinkle 3.2s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
 }
 
 

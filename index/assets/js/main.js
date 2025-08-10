@@ -68,19 +68,20 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   });
 });
 
-// Product details demo modal (simple alert; replace with real modal if needed)
-document.querySelectorAll('[data-product]').forEach((btn) => {
-  btn.addEventListener('click', () => {
-    const key = btn.getAttribute('data-product');
-    const messages = {
-      antibiotic:
-        'Broad‑Spectrum Antibiotic: Consult a veterinarian for diagnosis, dosage, and withdrawal periods.',
-      vaccine:
-        'Multivalent Vaccine: Maintain cold‑chain. Follow manufacturer schedule and site of administration.',
-      dewormer:
-        'Dewormer: Broad efficacy against internal parasites. Dose by weight and species.',
-    };
-    alert(messages[key] || 'Product details coming soon.');
+// Product details: toggle expandable sections below cards
+document.querySelectorAll('.details-toggle').forEach((btn) => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const controlsId = btn.getAttribute('aria-controls');
+    const panel = controlsId ? document.getElementById(controlsId) : null;
+    if (!panel) return;
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', (!expanded).toString());
+    if (expanded) {
+      panel.hidden = true;
+    } else {
+      panel.hidden = false;
+    }
   });
 });
 
